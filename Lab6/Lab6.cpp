@@ -3,7 +3,7 @@
 using namespace sf;
 using namespace std;
 int main() {
-	string background = "images1/backgrounds/winter.png";
+	string background = "images1/backgrounds/alebrije.png";
 	string foreground = "images1/characters/yoda.png";
 	Texture backgroundTex;
 	if (!backgroundTex.loadFromFile(background)) {
@@ -24,7 +24,19 @@ int main() {
 		for (int x = 0; x < sz.x; x++) {
 			// These two loops will run the code inside for each pixel in
 				// You can access the current pixel at x,y like so:
-				Color example = foregroundImage.getPixel(x,y);
+				Color f = foregroundImage.getPixel(x,y);
+				Color b = backgroundImage.getPixel(x, y);
+				
+				if (f.g > 200 && f.r < 100 && f.b < 100) {
+					foregroundImage.setPixel(x, y, Color(0, 0, 0, 0));
+				}
+			
+
+				
+				
+			
+				
+
 			// Color objects store the individual channel values like
 		
 		}
@@ -40,6 +52,7 @@ int main() {
 	sprite1.setTexture(tex1);
 	sprite2.setTexture(tex2);
 	window.clear();
+	window.draw(sprite2);
 	window.draw(sprite1);
 	window.display();
 	while (true);
